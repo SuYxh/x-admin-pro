@@ -41,6 +41,30 @@ export const constantRoutes: Array<RouteRecordRaw> = [
     ]
   },
   {
+    path: "/topic",
+    component: Layout,
+    redirect: "/topic/all",
+    name: "Topic",
+    meta: {
+      title: "所有题目",
+      icon: "menu"
+    },
+    children: [
+      {
+        path: "all",
+        component: () => import("@/views/topic/index.vue"),
+        name: "topic-all",
+        meta: { title: "题目" }
+      },
+      {
+        path: "test",
+        component: () => import("@/views/topic/index.vue"),
+        name: "topic-test",
+        meta: { title: "题目2" }
+      }
+    ]
+  },
+  {
     path: "/link",
     component: Layout,
     children: [

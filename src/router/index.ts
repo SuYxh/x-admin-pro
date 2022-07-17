@@ -41,6 +41,21 @@ export const constantRoutes: Array<RouteRecordRaw> = [
     ]
   },
   {
+    path: "/link",
+    component: Layout,
+    children: [
+      {
+        path: "https://github.com/SuYxh/x-admin-pro",
+        component: () => {},
+        name: "Link",
+        meta: {
+          title: "Github",
+          icon: "link"
+        }
+      }
+    ]
+  },
+  {
     path: "/unocss",
     component: Layout,
     redirect: "/unocss/index",
@@ -50,23 +65,8 @@ export const constantRoutes: Array<RouteRecordRaw> = [
         component: () => import("@/views/unocss/index.vue"),
         name: "Unocss",
         meta: {
-          title: "unocss",
+          title: "unocss(示例)",
           icon: "unocss"
-        }
-      }
-    ]
-  },
-  {
-    path: "/link",
-    component: Layout,
-    children: [
-      {
-        path: "https://juejin.cn/post/7089377403717287972",
-        component: () => {},
-        name: "Link",
-        meta: {
-          title: "外链",
-          icon: "link"
         }
       }
     ]
@@ -77,7 +77,7 @@ export const constantRoutes: Array<RouteRecordRaw> = [
     redirect: "/menu/menu1",
     name: "Menu",
     meta: {
-      title: "多级菜单",
+      title: "多级菜单(示例)",
       icon: "menu"
     },
     children: [
@@ -145,7 +145,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
     redirect: "/permission/page",
     name: "Permission",
     meta: {
-      title: "权限管理",
+      title: "权限管理(示例)",
       icon: "lock",
       roles: ["admin", "editor"], // 可以在根路由中设置角色
       alwaysShow: true // 将始终显示根菜单

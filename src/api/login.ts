@@ -8,7 +8,8 @@ interface ILoginData {
 /** 登录并返回 Token */
 export function login(data: ILoginData) {
   return request({
-    url: "users/login",
+    // url: "users/login",
+    url: "/users/login",
     method: "post",
     data
   })
@@ -16,7 +17,7 @@ export function login(data: ILoginData) {
 /** 获取用户详情 */
 export function getUserInfo() {
   return request({
-    url: "users/info",
+    url: "/users/info",
     method: "post"
   })
 }

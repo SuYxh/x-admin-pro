@@ -30,7 +30,7 @@ function createService() {
           case 0:
             // code === 0 代表没有错误
             return apiData
-          case 20000:
+          case 20000 || 200:
             // code === 20000 代表没有错误
             return apiData
           default:

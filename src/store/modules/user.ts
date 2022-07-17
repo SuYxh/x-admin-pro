@@ -32,7 +32,7 @@ export const useUserStore = defineStore({
           password: userInfo.password
         })
           .then((res: any) => {
-            setToken(res.data.accessToken)
+            setToken(res.data.accessToken || "admin-token")
             this.token = res.data.accessToken
             resolve(true)
           })
@@ -46,7 +46,7 @@ export const useUserStore = defineStore({
       return new Promise((resolve, reject) => {
         getUserInfo()
           .then((res: any) => {
-            this.roles = res.data.user.roles
+            this.roles = res.data?.roles || ["admin"]
             resolve(res)
           })
           .catch((error) => {

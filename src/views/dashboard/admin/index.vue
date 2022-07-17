@@ -1,3 +1,15 @@
 <template>
-  <div class="app-container">Admin 权限可见</div>
+  <div class="wrap">
+    <Description />
+  </div>
 </template>
+
+<script lang="ts" setup>
+import Description from "../Description.vue"
+</script>
+
+<style lang="scss">
+.wrap {
+  padding: 30px;
+}
+</style>

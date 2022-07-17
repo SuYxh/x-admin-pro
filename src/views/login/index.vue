@@ -43,7 +43,7 @@ const state = reactive({
     loginFormDom.value.validate((valid: boolean) => {
       if (valid) {
         state.loading = true
-        if (state.loginForm.code !== "gb2312") {
+        if (state.loginForm.code !== "gb23") {
           ElMessage.error("验证码错误")
           return
         }

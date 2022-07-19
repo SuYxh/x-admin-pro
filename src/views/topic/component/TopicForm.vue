@@ -23,6 +23,7 @@
         autocomplete="off"
       />
     </el-form-item>
+    <Upload @uploadSuccess="uploadSuccess" />
   </el-form>
 </template>
 
@@ -32,6 +33,7 @@ import type { FormInstance } from "element-plus"
 import { ElMessage } from "element-plus"
 import { getAllClassify, ClassifyType } from "@/api/classify"
 import { createTopic, CreateTopicType } from "@/api/topic"
+import Upload from "./Upload.vue"
 
 const props = defineProps({
   isEdit: {
@@ -69,6 +71,10 @@ if (!props.classify) {
   getClassify()
 } else {
   classify.value = props.classify as any
+}
+
+const uploadSuccess = (url: string) => {
+  formData.mdurl = url
 }
 
 // 校验 标题
@@ -118,10 +124,10 @@ const resetForm = (formEl: FormInstance | undefined) => {
 
 // 分发事件，父组件调用
 const distribute = (flag: boolean) => {
-  if (formDisabled.value) {
-    ElMessage.error("请先启用编辑")
-    return
-  }
+  // if (formDisabled.value) {
+  //   ElMessage.error("请先启用编辑")
+  //   return
+  // }
   flag ? submitForm(ruleFormRef.value) : resetForm(ruleFormRef.value)
 }
 

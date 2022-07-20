@@ -6,6 +6,7 @@ import App from "./App.vue"
 import ElementPlus from "element-plus"
 import loadSvg from "@/icons"
 import * as directives from "@/directives"
+import "highlight.js/styles/monokai.css"
 
 import "uno.css"
 import "normalize.css"

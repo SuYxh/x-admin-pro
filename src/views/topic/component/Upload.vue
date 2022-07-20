@@ -14,17 +14,24 @@
     <el-button v-if="!fileList.length" type="primary">Click to upload</el-button>
   </el-upload>
 
+  <br />
+  <br />
+  <Markdown :source="source" />
+
   <!-- <el-image v-if="url" style="width: 100px; height: 100px" :src="url" fit="cover" /> -->
 </template>
 <script lang="ts" setup>
 import { ref, defineEmits } from "vue"
 import { ElMessage, ElMessageBox } from "element-plus"
-
 import type { UploadProps, UploadUserFile } from "element-plus"
+// @ts-ignore
+import Markdown from "vue3-markdown-it"
+import axios from "axios"
 
 const action = ref(import.meta.env.VITE_BASE_API + "/upload")
 
 const url = ref("")
+const source = ref("")
 
 const fileList = ref<UploadUserFile[]>([])
 
@@ -36,6 +43,15 @@ const handleRemove: UploadProps["onRemove"] = (file, uploadFiles) => {
 
 const handleSuccess: UploadProps["onSuccess"] = (response) => {
   url.value = response.result
+  axios
+    .get(url.value)
+    .then((res) => {
+      console.log("res", res)
+      source.value = res.data
+    })
+    .catch((err) => {
+      console.log(err)
+    })
   emit("uploadSuccess", url.value)
 }
 
